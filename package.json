@@ -1,9 +1,11 @@
 {
   "name": "dutone-package",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jimp": "^0.2.28"
   }

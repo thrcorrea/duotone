@@ -1,10 +1,18 @@
 const api = require('./api.js');
+const ColorHelper = require('../helpers/color');
 
-function duotoneImage(image) {
-    console.log(image);
-    return api.get(image);
-}
+const getImageFromUrl = image => api.getImageFromUrl(image);
+
+const sanitizeInputs = (options) => {
+    for (var props in options) {
+        options[props] = isNaN(parseInt(options[props], 10)) || (/(?:[0-9a-fA-F]{3}){1,2}$/).test(options[props]) ?
+            options[props] :
+            parseInt(options[props], 10);
+    }
+    return options;
+};
 
 module.exports = {
-    duotoneImage
+    getImageFromUrl,
+    sanitizeInputs,
 }

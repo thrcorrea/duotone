@@ -1,8 +1,10 @@
 const express = require('express');
-const duotoneController = require('../controllers/image.js');
+const ImageController = require('../controllers/image.js');
 
 const router = express.Router();
 
-router.get('/', duotoneController.duotoneImage);
+router.get('/:effect?', ImageController.sanitizeInputs, ImageController.processImage);
+
+router.post('/:effect?', ImageController.sanitizeInputs, ImageController.processImage);
 
 module.exports = router;

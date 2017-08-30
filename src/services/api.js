@@ -1,9 +1,11 @@
 const http = require('http');
-const axios = require('axios');
+const https = require('https');
 
-function get(url) {
-    return new Promise((resolve, reject) => {
-        return http.get(url, (res) => {
+const getHttpProtocol = url => (url && url.indexOf('https') > -1) ? https : http;
+
+const getImageFromUrl = (url) => {
+    return (url) ? new Promise((resolve, reject) => {
+        return getHttpProtocol(url).get(url, (res) => {
             const data = [];
             res
             .on('data', function(chunk) {
@@ -14,9 +16,9 @@ function get(url) {
                 return resolve(buffer);
             });
         });
-    });
-}
+    }) : Promise.resolve(null);
+};
 
 module.exports = {
-    get
+    getImageFromUrl,
 }
