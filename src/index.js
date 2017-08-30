@@ -4,10 +4,11 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const imagesRoute = require('./routes/image.js');
 
-app.use('/images', imagesRoute);
+app.use('/', imagesRoute);
 
 
 app.listen(3000, () => {

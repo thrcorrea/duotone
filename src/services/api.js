@@ -1,13 +1,10 @@
 const http = require('http');
 const https = require('https');
-const axios = require('axios');
 
-function getHttpProtocol(url) {
-    return (url.indexOf('https') > -1) ? https : http; 
-}
+const getHttpProtocol = url => (url && url.indexOf('https') > -1) ? https : http;
 
-function get(url) {
-    return new Promise((resolve, reject) => {
+const getImageFromUrl = (url) => {
+    return (url) ? new Promise((resolve, reject) => {
         return getHttpProtocol(url).get(url, (res) => {
             const data = [];
             res
@@ -19,9 +16,9 @@ function get(url) {
                 return resolve(buffer);
             });
         });
-    });
-}
+    }) : Promise.resolve(null);
+};
 
 module.exports = {
-    get
+    getImageFromUrl,
 }
