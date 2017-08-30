@@ -24,6 +24,8 @@ const transformColor = (color) => {
 const applyEffect = (image, { primaryColor, secondaryColor }) => {
   return new Promise((resolve, reject) => {
     try {
+        if (!primaryColor || !secondaryColor) return reject('Missing Parameters');
+
         const firstColor = transformColor(primaryColor);
         const secondColor = transformColor(secondaryColor);
         const gradient = createGradient(firstColor, secondColor);
