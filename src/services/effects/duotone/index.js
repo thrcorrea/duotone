@@ -1,34 +1,15 @@
 const Jimp = require('jimp');
-const ColorHelper = require('../../helpers/color');
+const EffectHelper = require('./helpers');
 
-const createGradient = (primaryColorRGB, secondaryColorRGB) => {
-  const duotoneGradient = [];
-  for (let i = 0; i < 256; i++) {
-      const ratio = i / 255;
-      const modifiedArray = [
-          Math.round(primaryColorRGB[0] * ratio + secondaryColorRGB[0] * (1 - ratio)),
-          Math.round(primaryColorRGB[1] * ratio + secondaryColorRGB[1] * (1 - ratio)),
-          Math.round(primaryColorRGB[2] * ratio + secondaryColorRGB[2] * (1 - ratio))
-      ];
-      duotoneGradient.push(modifiedArray);
-  }
-  return duotoneGradient;
-};
-
-const transformColor = (color) => {
-  return (color instanceof Array) ?
-    color :
-    ColorHelper.hexToRgb(color);
-};
-
-const applyEffect = (image, { primaryColor, secondaryColor }) => {
+const applyEffect = (image, options) => {
   return new Promise((resolve, reject) => {
     try {
+        const { primaryColor, secondaryColor } = EffectHelper.parseOptions(options);
         if (!primaryColor || !secondaryColor) return reject('Missing Parameters');
 
-        const firstColor = transformColor(primaryColor);
-        const secondColor = transformColor(secondaryColor);
-        const gradient = createGradient(firstColor, secondColor);
+        const firstColor = EffectHelper.transformColor(primaryColor);
+        const secondColor = EffectHelper.transformColor(secondaryColor);
+        const gradient = EffectHelper.createGradient(firstColor, secondColor);
 
         image.scan(0, 0, image.bitmap.width, image.bitmap.height, function (x, y, idx) {
             let red   = this.bitmap.data[ idx + 0 ];
