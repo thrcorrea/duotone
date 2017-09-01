@@ -11,6 +11,6 @@ const imagesRoute = require('./routes/image.js');
 app.use('/', imagesRoute);
 
 
-app.listen(3000, () => {
+app.listen(80, () => {
     console.log('DuoTone listening on port 3000');
 });
