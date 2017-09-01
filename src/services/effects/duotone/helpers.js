@@ -35,24 +35,34 @@ const parseOptions = (options) => {
 };
 
 const selectColor = (colorName) => {
+  const colors = [
+    { primaryColor: '#FBFBFB', secondaryColor: '#283B6B' },
+    { primaryColor: '#FCC862', secondaryColor: '#2D45C6' },
+    { primaryColor: '#71DF6F', secondaryColor: '#272D67' },
+    { primaryColor: '#D92037', secondaryColor: '#2A3060' },
+    { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' },
+    { primaryColor: '#FCC862', secondaryColor: '#2D45C6' },
+    { primaryColor: '#A3D5CA', secondaryColor: '#E52839' },
+    { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' },
+  ];
   switch (colorName) {
     case 'grey':
     case 'gray':
-      return { primaryColor: '#FBFBFB', secondaryColor: '#283B6B' };
+      return colors[0];
     case 'yellow':
-      return { primaryColor: '#FCC862', secondaryColor: '#2D45C6' };
+      return colors[1];
     case 'green':
-      return { primaryColor: '#71DF6F', secondaryColor: '#272D67' };
+      return colors[2];
     case 'red':
-      return { primaryColor: '#D92037', secondaryColor: '#2A3060' };
+      return colors[3];
     case 'purple':
-      return { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' };
+      return colors[4];
     case 'sand':
-      return { primaryColor: '#FCC862', secondaryColor: '#2D45C6' };
+      return colors[5];
     case 'tomato':
-      return { primaryColor: '#A3D5CA', secondaryColor: '#E52839' };
+      return colors[6];
     default:
-      return { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' };
+      return colors[Math.floor(Math.random() * colors.length)];
   }
 };
 
