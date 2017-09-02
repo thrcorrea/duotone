@@ -1,0 +1,11 @@
+{
+  "id": "api",
+  "image": "wedeploy/nodejs",
+  "env": {
+      "NODE_ENV": "production"
+  },
+  "port": 80,
+  "cpu": 2,
+  "scale": 2,
+  "memory": 2048
+}
