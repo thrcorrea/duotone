@@ -43,7 +43,11 @@ const selectColor = (colorName) => {
     { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' },
     { primaryColor: '#FCC862', secondaryColor: '#2D45C6' },
     { primaryColor: '#A3D5CA', secondaryColor: '#E52839' },
-    { primaryColor: '#8ADFD0', secondaryColor: '#5C2998' },
+    { primaryColor: '#c1fce6', secondaryColor: '#920946' },
+    { primaryColor: '#71dd4c', secondaryColor: '#1807b5' },
+    { primaryColor: '#ff0de5', secondaryColor: '#15008d' },
+    { primaryColor: '#fbd439', secondaryColor: '#15008d' },
+    { primaryColor: '#05d1ea', secondaryColor: '#96057c' },
   ];
   switch (colorName) {
     case 'grey':
@@ -61,6 +65,16 @@ const selectColor = (colorName) => {
       return colors[5];
     case 'tomato':
       return colors[6];
+    case 'rusty':
+      return colors[7];
+    case 'lime':
+      return colors[8];
+    case 'neon':
+      return colors[9];
+    case 'bubblebee':
+      return colors[10];
+    case 'blurple':
+      return colors[11];
     default:
       return colors[Math.floor(Math.random() * colors.length)];
   }
