@@ -1,8 +1,5 @@
 {
   "id": "api",
-  "env": {
-      "NODE_ENV": "production"
-  },
   "port": 80,
   "cpu": 2,
   "scale": 2,
