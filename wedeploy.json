@@ -1,6 +1,5 @@
 {
   "id": "api",
-  "image": "wedeploy/nodejs",
   "env": {
       "NODE_ENV": "production"
   },
