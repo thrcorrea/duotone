@@ -31,7 +31,10 @@ const processImage = (req, res) => {
 
     return (imageUrl) ? ImageService.getImageFromUrl(imageUrl)
         .then(result => Jimp.read(result))
-        .then(image => selectEffect(effect)(image, options))
+        .then(image => {
+            if (!image) throw new Error("Unsupported image type");
+            return selectEffect(effect)(image, options);
+        })
         .then((response) => {
             if (response) {
                 const { buffer, image } = response;
@@ -40,7 +43,7 @@ const processImage = (req, res) => {
                     return res.send(buffer);
                 }
             }
-            return new Error('Unexpected Erro on Image Processing');
+            return new Error('Unexpected Error on Image Processing');
         })
         .catch((err) => {
             console.log(err);
