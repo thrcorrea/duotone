@@ -13,7 +13,7 @@ To run locally:
 To apply an effect, just use the desired effect name as a route, Ex:
 
 ´´´
-  GET /duotone?image=URLimage&color=green
+  /duotone?image=URLimage&color=green
 ´´´
 
 ### Duotone Effect
